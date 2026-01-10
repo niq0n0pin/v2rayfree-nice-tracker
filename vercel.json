@@ -1,0 +1,21 @@
+{
+  "functions": {
+    "api/fetch-latest.js": {
+      "maxDuration": 10
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/api/fetch-latest"
+    },
+    {
+      "source": "/latest",
+      "destination": "/api/fetch-latest"
+    },
+    {
+      "source": "/trackers",
+      "destination": "/api/merged-trackers"
+    }
+  ]
+}
