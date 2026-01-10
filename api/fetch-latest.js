@@ -1,34 +1,41 @@
-// api/fetch-latest.js
+// api/fetch-latest.js - 修订版（直接解析README）
 export default async function handler(request, response) {
   try {
-    // 1. 调用GitHub API获取 free-nodes/v2rayfree 仓库的文件列表
-    const apiResponse = await fetch('https://api.github.com/repos/free-nodes/v2rayfree/contents/');
+    console.log('开始从README提取节点...');
     
-    if (!apiResponse.ok) {
-      throw new Error(`GitHub API responded with status: ${apiResponse.status}`);
+    // 1. 获取最新的 README 内容
+    const readmeUrl = 'https://raw.githubusercontent.com/free-nodes/v2rayfree/main/README.md';
+    const readmeRes = await fetch(readmeUrl);
+    
+    if (!readmeRes.ok) {
+      throw new Error(`获取README失败，状态码: ${readmeRes.status}`);
     }
     
-    const files = await apiResponse.json();
+    const readmeText = await readmeRes.text();
     
-    // 2. 过滤出以 'v2' 开头的文件，并按文件名（即日期）降序排序
-    const v2Files = files
-      .filter(file => file.name.startsWith('v2') && file.type === 'file')
-      .sort((a, b) => b.name.localeCompare(a.name)); // 最新的排在前面
+    // 2. 使用正则表达式提取所有节点订阅链接
+    // 匹配 ss://, vmess://, vless://, trojan://, hy://, hysteria:// 等常见协议
+    // 链接通常持续到空格、换行或引号前
+    const nodeLinkRegex = /(?:ss|vmess|vless|trojan|hy|hysteria):\/\/[^\s<>"']+/gi;
+    const extractedLinks = readmeText.match(nodeLinkRegex) || [];
     
-    if (v2Files.length === 0) {
-      return response.status(404).send('未找到 v2 开头的节点文件。');
+    console.log(`从README中提取到 ${extractedLinks.length} 个节点链接`);
+    
+    // 3. 检查是否成功提取到链接
+    if (extractedLinks.length === 0) {
+      return response.status(404).send('未在README中找到有效的节点订阅链接。');
     }
     
-    // 3. 获取最新文件的原始下载链接
-    const latestFileUrl = v2Files[0].download_url;
-    console.log(`即将重定向到最新文件: ${latestFileUrl}`);
+    // 4. 将链接转换为纯文本格式（每行一个），这是V2RayN等客户端支持的格式
+    const nodesContent = extractedLinks.join('\n');
     
-    // 4. 302 重定向到该文件的原始地址
-    // 这样 V2Ray 客户端就能直接下载到内容
-    response.redirect(302, latestFileUrl);
+    // 5. 成功返回
+    response.setHeader('Content-Type', 'text/plain; charset=utf-8');
+    response.status(200).send(nodesContent);
     
   } catch (error) {
-    console.error('获取最新节点时出错:', error);
-    response.status(500).send('服务器内部错误，无法获取最新节点。');
+    console.error('处理请求时发生错误:', error);
+    response.setHeader('Content-Type', 'text/plain; charset=utf-8');
+    response.status(500).send('服务器处理失败: ' + error.message);
   }
 }
