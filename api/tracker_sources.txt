@@ -1,2 +1,2 @@
-#https://cf.trackerslist.com/best.txt
+https://cf.trackerslist.com/best.txt
 https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_best.txt
