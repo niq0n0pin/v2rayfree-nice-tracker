@@ -3,7 +3,7 @@ const { getNodeContent } = require('./fetch-latest.js');
 const { getTrackerContent } = require('./merged-trackers.js'); // 确保这个函数也已用同样方式导出
 
 async function handler(req, res) {
-   授权验证
+  // 正确的授权验证代码 (只有以下三行)
   if (req.headers.authorization !== `Bearer ${process.env.CRON_SECRET}`) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
