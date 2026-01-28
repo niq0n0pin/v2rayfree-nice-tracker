@@ -1,17 +1,43 @@
-name: Auto Backup Nodes and Trackers
+name: Daily Backup
 
 on:
   schedule:
-    # 指定 cron 表达式，UTC 时间。下面是从 00:15 开始，每4小时运行一次。
-    - cron: '15 */4 * * *'
-  # 可选：允许手动触发此工作流（在GitHub仓库页面的Actions标签页中点击按钮运行）
-  workflow_dispatch:
+    - cron: '0 14 * * *'  # UTC时间14:00（北京时间22:00）
+  workflow_dispatch:  # 允许手动触发
 
 jobs:
   backup:
-    runs-on: ubuntu-latest # 使用GitHub提供的Linux虚拟机[citation:9]
-
+    runs-on: ubuntu-latest
     steps:
-      - name: Trigger Backup
+      - name: Debug - 显示密钥信息
         run: |
-          curl -s "https://your-app.vercel.app/api/cron-backup?token=${{ secrets.CRON_TOKEN }}"
+          echo "密钥长度: ${#CRON_SECRET}"
+          echo "密钥（安全显示）: ${CRON_SECRET:0:4}...${CRON_SECRET: -4}"
+        env:
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+      
+      - name: 发送备份请求（带详细日志）
+        run: |
+          echo "发送请求到: https://yang-eight-sigma.vercel.app/api/cron-backup"
+          
+          # 方法1：使用 curl 详细模式
+          curl -v -X POST \
+            https://yang-eight-sigma.vercel.app/api/cron-backup \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            -H "Content-Type: application/json" \
+            -H "User-Agent: GitHub-Actions-Backup/1.0" \
+            -d '{"test": true}'
+          
+          # 方法2：检查响应状态
+          echo -e "\n\n检查响应状态..."
+          response=$(curl -s -o response.txt -w "%{http_code}" \
+            -X POST \
+            https://yang-eight-sigma.vercel.app/api/cron-backup \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            -H "Content-Type: application/json")
+          
+          echo "HTTP状态码: $response"
+          if [ -f response.txt ]; then
+            echo "响应内容:"
+            cat response.txt
+          fi
