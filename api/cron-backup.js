@@ -18,12 +18,12 @@ export default async function handler(req, res) {
   const backupTasks = [
     {
       name: '节点列表',
-      sourceUrl: `https://${req.headers.host || process.env.VERCEL_URL}/api/fetch-latest`,
+      sourceUrl: `https://yang-eight-sigma.vercel.app/api/fetch-latest`,
       targetPath: 'backup/nodes.txt'
     },
     {
       name: 'Tracker列表',
-      sourceUrl: `https://${req.headers.host || process.env.VERCEL_URL}/api/merged-trackers`,
+      sourceUrl: `https://yang-eight-sigma.vercel.app/api/merged-trackers`,
       targetPath: 'backup/trackers.txt'
     }
   ];
