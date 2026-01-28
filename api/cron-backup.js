@@ -18,12 +18,12 @@ export default async function handler(req, res) {
   const backupTasks = [
     {
       name: '节点列表',
-      sourceUrl: `/api/fetch-latest`, // 从你现有的服务获取节点
-      targetPath: 'backup/nodes.txt' // 在GitHub仓库中保存的位置
+      sourceUrl: `https://${req.headers.host || process.env.VERCEL_URL}/api/fetch-latest`,
+      targetPath: 'backup/nodes.txt'
     },
     {
       name: 'Tracker列表',
-      sourceUrl: `/api/merged-trackers`, // 从你现有的服务获取Tracker
+      sourceUrl: `https://${req.headers.host || process.env.VERCEL_URL}/api/merged-trackers`,
       targetPath: 'backup/trackers.txt'
     }
   ];
