@@ -12,10 +12,9 @@ jobs:
     runs-on: ubuntu-latest # 使用GitHub提供的Linux虚拟机[citation:9]
 
     steps:
-      - name: Call Vercel Backup API
+      - name: Trigger Backup
         run: |
-          # 调用你之前写好的、部署在Vercel上的备份接口
-          # 将 <your_cron_secret> 和 <your_vercel_domain> 替换成你的实际信息
-          curl -X POST \
-            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
-              https://yang-eight-sigma.vercel.app/api/cron-backup
+          curl -X POST https://yang-eight-sigma.vercel.app/api/cron-backup \
+            -H "Authorization: Bearer ${{ secrets.CRON_TOKEN }}" \
+            -H "Content-Type: application/json"
+            
