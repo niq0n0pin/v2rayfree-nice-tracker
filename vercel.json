@@ -27,7 +27,7 @@
   "crons": [
     {
       "path": "/api/cron-backup",
-      "schedule": "15 */4 * * *"// Cron表达式
+      "schedule": "15 */4 * * *"
     }
   ]
 }
