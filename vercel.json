@@ -22,6 +22,11 @@
     {
       "source": "/trackers",
       "destination": "/api/merged-trackers"
+    },
+    // === 新增这条规则，用于触发备份 ===
+    {
+      "source": "/api/cron-backup",
+      "destination": "/api/cron-backup"
     }
   ]
 }
