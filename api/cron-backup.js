@@ -1,6 +1,6 @@
 // api/cron-backup.js
-import { getNodeContent } from './fetch-latest.js';
-import { getTrackerContent } from './merged-trackers.js'; // 请确保你在 merged-trackers.js 中导出了同名函数
+const { getNodeContent } = require('./fetch-latest.js');
+const { getTrackerContent } = require('./merged-trackers.js'); // 请确保你在 merged-trackers.js 中导出了同名函数
 
 export default async function handler(req, res) {
   // 授权验证 (保持不变)
