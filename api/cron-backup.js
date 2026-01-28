@@ -32,6 +32,7 @@ async function handler(req, res) {
 
       // 2. 准备GitHub API参数
       const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${task.targetPath}`;
+      console.log(`[DEBUG] 准备请求的完整API URL: ${apiUrl}`);   
       const headers = {
         'Authorization': `token ${ghToken}`,
         'Accept': 'application/vnd.github.v3+json',
