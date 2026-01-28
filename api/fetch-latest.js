@@ -1,47 +1,10 @@
-// api/fetch-latest.js - 使用更兼容的 CommonJS 语法
-
-// 核心功能函数
-async function getNodeContent() {
-  console.log('[getNodeContent] 正在提取节点...');
+// api/fetch-latest.js - 重构为可复用模块
+export default async function handler(request, response) {
   try {
-    const readmeRawUrl = 'https://raw.githubusercontent.com/free-nodes/v2rayfree/main/README.md';
-    const readmeRes = await fetch(readmeRawUrl);
-    
-    if (!readmeRes.ok) {
-      throw new Error(`获取源文件失败: ${readmeRes.status}`);
-    }
-    
-    const fullText = await readmeRes.text();
-    const delimiter = '```';
-    const firstIndex = fullText.indexOf(delimiter);
-    
-    if (firstIndex === -1) {
-      throw new Error('未找到代码块起始标记。');
-    }
-    
-    const textAfterFirst = fullText.substring(firstIndex + delimiter.length);
-    const secondIndex = textAfterFirst.indexOf(delimiter);
-    
-    if (secondIndex === -1) {
-      throw new Error('未找到匹配的代码块结束标记。');
-    }
-    
-    const nodeListText = textAfterFirst.substring(0, secondIndex).trim();
-    console.log(`[getNodeContent] 提取完成，文本长度: ${nodeListText.length}`);
-    return nodeListText;
-    
-  } catch (error) {
-    console.error('[getNodeContent] 发生错误:', error);
-    throw error; // 重新抛出
-  }
-}
-
-// Vercel Serverless 函数的主处理函数（默认导出）
-async function handler(request, response) {
-  try {
+    // 调用新封装的 getNodeContent 函数
     const nodeListText = await getNodeContent();
     const nodeLines = nodeListText.split('\n');
-    console.log(`HTTP接口提取完成，共 ${nodeLines.length} 行。`);
+    console.log(`提取完成，共 ${nodeLines.length} 行。`);
     response.setHeader('Content-Type', 'text/plain; charset=utf-8');
     response.status(200).send(nodeListText);
   } catch (error) {
@@ -51,8 +14,32 @@ async function handler(request, response) {
   }
 }
 
-// 关键：使用 module.exports 同时暴露默认函数和命名函数
-module.exports = {
-  handler: handler,         // 供Vercel调用的默认函数
-  getNodeContent: getNodeContent // 供其他模块调用的函数
-};
+// ========== 核心功能函数 ==========
+// 此函数封装了所有核心逻辑，可被其他模块（如 cron-backup.js）直接调用
+export async function getNodeContent() {
+  try {
+    console.log('[getNodeContent] 正在提取节点...');
+    const readmeRawUrl = 'https://raw.githubusercontent.com/free-nodes/v2rayfree/main/README.md';
+    const readmeRes = await fetch(readmeRawUrl);
+    if (!readmeRes.ok) {
+      throw new Error(`获取源文件失败: ${readmeRes.status}`);
+    }
+    const fullText = await readmeRes.text();
+    const delimiter = '```';
+    const firstIndex = fullText.indexOf(delimiter);
+    if (firstIndex === -1) {
+      throw new Error('未找到代码块起始标记。');
+    }
+    const textAfterFirst = fullText.substring(firstIndex + delimiter.length);
+    const secondIndex = textAfterFirst.indexOf(delimiter);
+    if (secondIndex === -1) {
+      throw new Error('未找到匹配的代码块结束标记。');
+    }
+    const nodeListText = textAfterFirst.substring(0, secondIndex).trim();
+    return nodeListText;
+  } catch (error) {
+    console.error('[getNodeContent] 发生错误:', error);
+    // 重新抛出错误，让调用者决定如何处理
+    throw error;
+  }
+}
