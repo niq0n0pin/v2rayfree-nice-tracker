@@ -1,9 +1,9 @@
 // api/cron-backup.js
 export default async function handler(req, res) {
   // 用于验证请求来自Vercel Cron，防止别人随便调用
-  if (req.headers.authorization !== `Bearer ${process.env.CRON_SECRET}`) {
-    return res.status(401).json({ error: 'Unauthorized' });
-  }
+  //if (req.headers.authorization !== `Bearer ${process.env.CRON_SECRET}`) {
+  //  return res.status(401).json({ error: 'Unauthorized' });
+  //}
 
   console.log('🔔 备份任务开始');
   const report = []; // 记录执行结果
