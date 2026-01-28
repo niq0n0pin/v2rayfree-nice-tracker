@@ -18,7 +18,7 @@ export async function getTrackerContent() {
   try {
     console.log('[getTrackerContent] 开始获取并合并Tracker列表...');
     // 1. 读取配置文件 (注意：需根据你的实际仓库和路径修改)
-    const configUrl = 'https://raw.githubusercontent.com/niq0n0pin/v2rayfree-nice-tracker/main/api/tracker_sources.txt';
+    const configUrl = 'https://raw.githubusercontent.com/niq0n0pin/v2rayfree-nice-tracker/main/tracker_sources.txt';
     // 如果是私有仓库，这里需要带上 Token（建议通过环境变量），以下为示例：
     // const ghToken = process.env.YOUR_GH_TOKEN; // 从环境变量读取
     // const headers = ghToken ? { 'Authorization': `token ${ghToken}` } : {};
