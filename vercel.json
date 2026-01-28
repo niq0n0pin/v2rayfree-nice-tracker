@@ -2,6 +2,12 @@
   "functions": {
     "api/fetch-latest.js": {
       "maxDuration": 10
+    },
+    "api/merged-trackers.js": {
+      "maxDuration": 10
+    },
+    "api/cron-backup.js": {
+      "maxDuration": 30
     }
   },
   "rewrites": [
@@ -17,24 +23,11 @@
       "source": "/trackers",
       "destination": "/api/merged-trackers"
     }
-  ]
-}
-{
-  "functions": {
-    "api/fetch-latest.js": { "maxDuration": 10 },
-    "api/merged-trackers.js": { "maxDuration": 10 },
-    "api/cron-backup.js": { "maxDuration": 30 } // 备份可能需要更长时间
-  },
-  "rewrites": [
-    { "source": "/", "destination": "/api/fetch-latest" },
-    { "source": "/latest", "destination": "/api/fetch-latest" },
-    { "source": "/trackers", "destination": "/api/merged-trackers" }
   ],
   "crons": [
     {
       "path": "/api/cron-backup",
-      "schedule": "15 */4 * * *" // Cron表达式：每4小时的第15分钟执行一次
-      // 如果你想在 UTC 00:15 开始，表达式是 "15 0,4,8,12,16,20 * * *"
+      "schedule": "15 */4 * * *"
     }
   ]
 }
