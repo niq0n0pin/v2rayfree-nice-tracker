@@ -51,6 +51,12 @@ api/tracker_sources.txt中【其实就两个】
 
 https://raw.githubusercontent.com/niq0n0pin/v2rayfree-nice-tracker/main/backup/trackers.txt
 
+[好像对于https://raw.githubusercontent.com读取有点问题]
+
+所以可以用
+
+https://ghfast.top/https://raw.githubusercontent.com/niq0n0pin/v2rayfree-nice-tracker/main/backup/trackers.txt
+
 三.关于项目构建
 
 域名代码  用的vercel
