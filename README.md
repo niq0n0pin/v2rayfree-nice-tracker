@@ -57,6 +57,8 @@ https://raw.githubusercontent.com/niq0n0pin/v2rayfree-nice-tracker/main/backup/t
 
 https://ghfast.top/https://raw.githubusercontent.com/niq0n0pin/v2rayfree-nice-tracker/main/backup/trackers.txt
 
+如果还是有问题那么总的来讲就是找个镜像下载就行
+
 三.关于项目构建
 
 域名代码  用的vercel
