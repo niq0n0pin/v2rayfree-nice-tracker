@@ -145,10 +145,8 @@ udp://explodie.org:6969/announce
 http://wepzone.net:6969/announce
 http://tracker.wepzone.net:6969/announce
 http://tracker.darkness.services:6969/announce
-http://tr.kxmp.cf:80/announce
-http://open.acgtracker.com:1096/announce
 http://extracker.dahrkael.net:6969/announce
-udp://tracker.yume-hatsuyuki.moe:6969/announce
+udp://open.demonoid.ch:6969/announce
 udp://bandito.byterunner.io:6969/announce
-https://tracker.iperson.xyz:443/announce
 http://tracker.tvunderground.org.ru:3218/announce
+http://open.acgtracker.com:1096/announce
