@@ -1,3 +1,6 @@
+！！！测试.zip  是我用来当作v2rayn测试速度文件的
+
+
 节点每4小时更新，tracker也是
 
 一.对于v2rayfree-nice介绍
