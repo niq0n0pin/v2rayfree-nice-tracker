@@ -1,3 +1,12 @@
+！！！为了v2rayN的测速文件  上传了一个test.zip
+在
+https://github.com/niq0n0pin/v2rayfree-nice-tracker/releases
+
+这是文件下载
+可以填入到 v2ray的设置中
+https://github.com/niq0n0pin/v2rayfree-nice-tracker/releases/download/test/test.zip
+
+
 
 节点每4小时更新，tracker也是
 
