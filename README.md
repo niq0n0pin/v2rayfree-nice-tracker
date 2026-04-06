@@ -1,10 +1,15 @@
 ！！！为了v2rayN的测速文件  上传了一个test.zip
 在
+
 https://github.com/niq0n0pin/v2rayfree-nice-tracker/releases
 
 这是文件下载
-可以填入到 v2ray的设置中
+
+可以填入到 v2ray的设置中[因为github有全球CDN 所以测速准一些]
+
 https://github.com/niq0n0pin/v2rayfree-nice-tracker/releases/download/test/test.zip
+
+————————————————————————————————————————————————————————————————————————————————————————————————————
 
 
 
