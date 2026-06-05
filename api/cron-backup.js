@@ -1,9 +1,8 @@
 // api/cron-backup.js
 import { getNodeContent } from './fetch-latest.js';
-import { getTrackerContent } from './merged-trackers.js'; // 请确保你在 merged-trackers.js 中导出了同名函数
+import { getTrackerContent } from './merged-trackers.js';
 
 export default async function handler(req, res) {
-  // 授权验证 (保持不变)
   if (req.headers.authorization !== `Bearer ${process.env.CRON_SECRET}`) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
@@ -11,10 +10,9 @@ export default async function handler(req, res) {
   console.log('🚀 备份任务开始 (模块调用模式)');
   const results = [];
   const ghToken = process.env.GH_BACKUP_TOKEN;
-  const repoOwner = 'niq0n0pin'; // 例如：niqOnOpin
-  const repoName = 'v2rayfree-nice-tracker';   // 例如：free-nodes-backup
+  const repoOwner = 'niq0n0pin';
+  const repoName = 'v2rayfree-nice-tracker';
 
-  // 定义备份任务配置
   const backupTasks = [
     { name: '节点列表', getContent: getNodeContent, targetPath: 'backup/nodes.txt' },
     { name: 'Tracker列表', getContent: getTrackerContent, targetPath: 'backup/trackers.txt' }
@@ -23,10 +21,7 @@ export default async function handler(req, res) {
   for (const task of backupTasks) {
     try {
       console.log(`  处理：${task.name}`);
-      // 1. 直接调用模块函数获取内容，无需HTTP
       const fileContent = await task.getContent();
-      
-      // 2. 以下是推送到GitHub的逻辑 (与你之前代码一致，确保域名、仓库名正确)
       const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${task.targetPath}`;
       const headers = {
         'Authorization': `token ${ghToken}`,
@@ -54,7 +49,6 @@ export default async function handler(req, res) {
     }
   }
 
-  // 返回报告
   const allSuccess = results.every(r => r.success);
   res.status(allSuccess ? 200 : 207).json({
     message: `备份完成，成功 ${results.filter(r => r.success).length} 项，失败 ${results.filter(r => !r.success).length} 项`,
