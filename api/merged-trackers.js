@@ -1,7 +1,6 @@
 // api/merged-trackers.js - 重构为可复用模块
 export default async function handler(request, response) {
   try {
-    // 调用新封装的 getTrackerContent 函数
     const mergedText = await getTrackerContent();
     response.setHeader('Content-Type', 'text/plain; charset=utf-8');
     response.status(200).send(mergedText);
@@ -12,18 +11,13 @@ export default async function handler(request, response) {
   }
 }
 
-// ========== 核心功能函数 ==========
-// 此函数封装了获取并合并 Tracker 的核心逻辑
+// 核心函数：获取并合并 Tracker 列表
 export async function getTrackerContent() {
   try {
     console.log('[getTrackerContent] 开始获取并合并Tracker列表...');
-    // 1. 读取配置文件 (注意：需根据你的实际仓库和路径修改)
+    // 注意：此配置文件需要放在你的公共仓库中，路径根据实际情况修改
     const configUrl = 'https://raw.githubusercontent.com/niq0n0pin/v2rayfree-nice-tracker/main/api/tracker_sources.txt';
-    // 如果是私有仓库，这里需要带上 Token（建议通过环境变量），以下为示例：
-    // const ghToken = process.env.YOUR_GH_TOKEN; // 从环境变量读取
-    // const headers = ghToken ? { 'Authorization': `token ${ghToken}` } : {};
-    // const configResponse = await fetch(configUrl, { headers });
-    const configResponse = await fetch(configUrl); // 公开仓库直接访问
+    const configResponse = await fetch(configUrl);
     if (!configResponse.ok) {
       throw new Error(`无法读取配置文件: ${configResponse.status}`);
     }
@@ -36,7 +30,6 @@ export async function getTrackerContent() {
     if (trackerUrls.length === 0) {
       throw new Error('配置文件中未找到有效的Tracker链接。');
     }
-    // 2. 并发抓取
     const fetchPromises = trackerUrls.map(url =>
       fetch(url).then(res => {
         if (!res.ok) {
@@ -50,7 +43,6 @@ export async function getTrackerContent() {
       })
     );
     const contents = await Promise.all(fetchPromises);
-    // 3. 合并并去重
     const validContents = contents.filter(c => c != null && c.trim().length > 0);
     if (validContents.length === 0) {
       throw new Error('所有Tracker源均抓取失败。');
