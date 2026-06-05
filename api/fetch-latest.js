@@ -39,27 +39,4 @@ export async function getNodeContent() {
     console.error('[getNodeContent] 发生错误:', error);
     throw error;
   }
-}    const originalNodes = await getOriginalNodes();
-    // 获取 free-v2ray 节点
-    const freeV2rayNodes = await getFreeV2rayNodes();
-
-    // 合并并去重（按行去重）
-    let combined = originalNodes;
-    if (freeV2rayNodes.trim().length > 0) {
-      combined = originalNodes + '\n' + freeV2rayNodes;
-    }
-
-    // 基础去重：每行一个节点，去除重复行
-    const lines = combined.split('\n')
-      .map(line => line.trim())
-      .filter(line => line.length > 0);
-    const uniqueLines = [...new Set(lines)];
-    const result = uniqueLines.join('\n');
-
-    console.log(`[getNodeContent] 合并完成，总节点数: ${uniqueLines.length} (原始: ${originalNodes.split('\n').filter(l=>l.trim()).length}, 新增: ${freeV2rayNodes.split('\n').filter(l=>l.trim()).length})`);
-    return result;
-  } catch (error) {
-    console.error('[getNodeContent] 发生错误:', error);
-    throw error;
-  }
 }
