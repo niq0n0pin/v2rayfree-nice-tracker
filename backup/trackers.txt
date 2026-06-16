@@ -150,10 +150,5 @@ udp://yuptracker-eu.gaijinent.com:27022/announce
 udp://zer0day.ch:1337/announce
 wss://tracker.openwebtorrent.com:443/announce
 http://tracker.opentrackr.org:1337/announce
-http://www.genesis-sp.org:2710/announce
-http://tracker.xiaoduola.xyz:6969/announce
 http://tracker.tritan.gg:8080/announce
-http://tracker.dmcomic.org:2710/announce
 http://tr.kxmp.cf:80/announce
-http://share.hkg-fansub.info:80/announce.php
-http://buny.uk:6969/announce
