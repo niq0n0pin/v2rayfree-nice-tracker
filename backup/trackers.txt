@@ -154,15 +154,13 @@ udp://yuptracker-eu.gaijinent.com:27022/announce
 udp://zer0day.ch:1337/announce
 wss://tracker.openwebtorrent.com:443/announce
 http://tracker.opentrackr.org:1337/announce
+udp://tracker.iperson.xyz:6969/announce
 http://tracker.xiaoduola.xyz:6969/announce
+http://tracker.tritan.gg:8080/announce
 http://tracker.sbsub.com:2710/announce
-http://tracker.moxing.party:6969/announce
 http://tracker.lintk.me:2710/announce
 http://tracker.dmcomic.org:2710/announce
-http://tracker.bz:80/announce
 http://torrent.hificode.in:6969/announce
 http://shubt.net:2710/announce
-http://retracker.spark-rostov.ru:80/announce
-http://buny.uk:6969/announce
 http://bt1.xxxxbt.cc:6969/announce
 http://bt.poletracker.org:2710/announce
