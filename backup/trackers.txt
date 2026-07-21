@@ -137,4 +137,7 @@ udp://zer0day.ch:1337/announce
 wss://tracker.openwebtorrent.com:443/announce
 http://tracker.opentrackr.org:1337/announce
 http://open.tracker.cl:1337/announce
-udp://tracker.skynetcloud.site:6969/announce
+udp://edgev.duckdns.org:6969/announce
+https://edgev.duckdns.org:443/announce
+udp://tracker.plx.im:6969/announce
+http://tracker.nexusstream.eu:6969/announce
