@@ -143,11 +143,9 @@ udp://whybother.torrentonline.cc:42069/announce
 udp://yuptracker-eu.gaijinent.com:27022/announce
 udp://zer0day.ch:1337/announce
 wss://tracker.openwebtorrent.com:443/announce
-http://www.genesis-sp.org:2710/announce
-http://tracker.xiaoduola.xyz:6969/announce
-http://tracker.corpscorp.online:80/announce
-http://tracker.bz:80/announce
+https://tr.nyacat.pw:443/announce
 http://tracker.bt-hash.com:80/announce
-http://tracker.bittor.pw:1337/announce
-http://shubt.net:2710/announce
+http://tr.nyacat.pw:80/announce
 http://share.hkg-fansub.info:80/announce.php
+http://home.yxgz.club:6969/announce
+udp://open.demonoid.ch:6969/announce
