@@ -137,10 +137,7 @@ udp://whybother.torrentonline.cc:42069/announce
 udp://yuptracker-eu.gaijinent.com:27022/announce
 udp://zer0day.ch:1337/announce
 wss://tracker.openwebtorrent.com:443/announce
-http://tracker810.xyz:11450/announce
-http://tracker.dmcomic.org:2710/announce
-http://tracker.corpscorp.online:80/announce
-http://retracker.spark-rostov.ru:80/announce
-http://jvavav.com:80/announce
-http://bt.poletracker.org:2710/announce
-http://0d.kebhana.mx:443/announce
+https://tracker.zhuqiy.com:443/announce
+https://tracker.bt4g.com:443/announce
+udp://tracker.tryhackx.org:6969/announce
+udp://tracker.004430.xyz:1337/announce
