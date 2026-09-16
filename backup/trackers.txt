@@ -119,3 +119,7 @@ udp://tracker4.itzmx.com:2710/announce
 udp://v6.vito-tracker.space:6969/announce
 udp://yuptracker-eu.gaijinent.com:27022/announce
 wss://tracker.openwebtorrent.com:443/announce
+udp://tracker.tryhackx.org:6969/announce
+https://tr.nyacat.pw:443/announce
+https://ht.therarbg.to:443/announce
+http://tr.nyacat.pw:80/announce
