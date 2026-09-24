@@ -118,4 +118,5 @@ udp://tracker4.itzmx.com:2710/announce
 udp://v6.vito-tracker.space:6969/announce
 udp://yuptracker-eu.gaijinent.com:27022/announce
 wss://tracker.openwebtorrent.com:443/announce
+udp://tracker.opentorrent.top:6969/announce
 https://pybittrack.retiolus.net:443/announce
