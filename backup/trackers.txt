@@ -122,3 +122,4 @@ udp://v2.iperson.xyz:6969/announce
 udp://yuptracker-eu.gaijinent.com:27022/announce
 wss://tracker.openwebtorrent.com:443/announce
 http://tracker.dhitechnical.com:6969/announce
+udp://tr3.ysagin.top:2715/announce
