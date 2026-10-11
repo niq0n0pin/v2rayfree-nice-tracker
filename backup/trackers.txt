@@ -124,3 +124,4 @@ udp://whybother.torrentonline.cc:42069/announce
 udp://yuptracker-eu.gaijinent.com:27022/announce
 wss://tracker.openwebtorrent.com:443/announce
 http://tracker.bittor.pw:1337/announce
+https://pybittrack.retiolus.net:443/announce
