@@ -122,4 +122,5 @@ udp://tracker4.itzmx.com:2710/announce
 udp://v2.iperson.xyz:6969/announce
 udp://yuptracker-eu.gaijinent.com:27022/announce
 wss://tracker.openwebtorrent.com:443/announce
-http://tracker.bittor.pw:1337/announce
+udp://tracker.tryhackx.org:6969/announce
+udp://tracker.flatuslifir.is:6969/announce
