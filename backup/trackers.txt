@@ -119,5 +119,9 @@ udp://tracker4.itzmx.com:2710/announce
 udp://v2.iperson.xyz:6969/announce
 udp://yuptracker-eu.gaijinent.com:27022/announce
 wss://tracker.openwebtorrent.com:443/announce
+udp://tracker.tryhackx.org:6969/announce
 http://tracker.bittor.pw:1337/announce
+udp://tr3.ysagin.top:2715/announce
 http://tr.highstar.shop:80/announce
+udp://whybother.torrentonline.cc:42069/announce
+udp://archive.torrentonline.cc:42069/announce
