@@ -122,4 +122,7 @@ udp://tracker4.itzmx.com:2710/announce
 udp://v2.iperson.xyz:6969/announce
 udp://yuptracker-eu.gaijinent.com:27022/announce
 wss://tracker.openwebtorrent.com:443/announce
-http://tr.highstar.shop:80/announce
+udp://tracker.tryhackx.org:6969/announce
+udp://tracker.theoks.net:6969/announce
+http://tracker.23794.top:6969/announce
+udp://whybother.torrentonline.cc:42069/announce
