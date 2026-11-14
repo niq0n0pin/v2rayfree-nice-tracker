@@ -124,3 +124,4 @@ udp://whybother.torrentonline.cc:42069/announce
 udp://yuptracker-eu.gaijinent.com:27022/announce
 wss://tracker.openwebtorrent.com:443/announce
 http://tr.highstar.shop:80/announce
+udp://archive.torrentonline.cc:42069/announce
