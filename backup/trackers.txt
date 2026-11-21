@@ -127,4 +127,8 @@ udp://v2.iperson.xyz:6969/announce
 udp://whybother.torrentonline.cc:42069/announce
 udp://yuptracker-eu.gaijinent.com:27022/announce
 wss://tracker.openwebtorrent.com:443/announce
+udp://tracker.theoks.net:6969/announce
+udp://tracker.23794.top:6969/announce
+udp://opentracker.lain.moscow:6969/announce
 http://tr.highstar.shop:80/announce
+http://opentracker.lain.moscow:6969/announce
