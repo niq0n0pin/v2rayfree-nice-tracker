@@ -134,4 +134,5 @@ udp://v2.iperson.xyz:6969/announce
 udp://whybother.torrentonline.cc:42069/announce
 wss://tracker.openwebtorrent.com:443/announce
 http://t.overflow.biz:6969/announce
+udp://tr3.ysagin.top:2715/announce
 http://tr.highstar.shop:80/announce
